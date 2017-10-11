@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <style>
+        form{
+            width:80%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only"><%= title %></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><%= title %></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="http://127.0.0.1:3000">全部相册 <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="#">上传照片</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="container">
+    <ol class="breadcrumb">
+        <li><a href="http://127.0.0.1:3000">首页</a></li>
+        <li class="active"><%= bread %></li>
+    </ol>
+    <div class="row">
+        <form class="form-horizontal" enctype="multipart/form-data" method="post" action="#">
+            <div class="form-group">
+                <label for="picName" class="col-sm-2 control-label">图片名称</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="picName" name="picName" placeholder="图片名称">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="picAdd" class="col-sm-2 control-label">图片地址</label>
+                <div class="col-sm-10">
+                    <input type="file" class="form-control" id="picAdd" name="picAdd" placeholder="图片地址">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="chooseDir" class="col-sm-2 control-label">选择目录</label>
+                <div class="col-sm-10">
+                    <select class="form-control" name="chooseDir" id="chooseDir">
+                        <% for(var i=0;i<albums.length;i++){%>
+                            <option value="<%= albums[i] %>"><%= albums[i] %></option>
+                        <% } %>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success">确定</button>
+                    <button type="reset" class="btn btn-danger">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<script src="/js/jquery.min.js"></script>
+</body>
+</html>
